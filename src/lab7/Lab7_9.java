@@ -2,22 +2,18 @@ package lab7;
 
 import java.util.Scanner;
 
-public class Lab7_7 {
+public class Lab7_9 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int[] arr = new int[n];
-
         for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
-        int k = sc.nextInt();
-        int count = 0;
-        for (int i : arr) {
-            if (i == k) {
-                count++;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] >= 0 && arr[i] <= 10) {
+                System.out.print(arr[i] + " ");
             }
         }
-        System.out.println(count);
     }
 }

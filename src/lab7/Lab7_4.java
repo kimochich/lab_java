@@ -13,7 +13,12 @@ public class Lab7_4 {
             int a = sc.nextInt();
             arrayList.add(a);
         }
-        int max = arrayList.stream().max(Comparator.comparingInt(o -> o)).orElse(0);
+        int max = arrayList.get(0);
+        for (Integer i : arrayList) {
+            if (max < i) {
+                max = i;
+            }
+        }
         System.out.println(max);
     }
 }
