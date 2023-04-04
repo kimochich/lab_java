@@ -1,5 +1,6 @@
 package asm2.models;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,10 +45,11 @@ public class Customer extends User {
     }
 
     public void displayInformation() {
-        System.out.println(getCustomerId() + "     |     " + (isPremium() ? "Premium" : "Normal") + "   |   " + getBalance());
+        DecimalFormat formatter = new DecimalFormat("###,###,###");
+        System.out.println(getCustomerId() + "     |     " + (isPremium() ? "Premium" : "Normal") + "   |     " + formatter.format(getBalance()) + "đ");
         for (int i = 0; i < accounts.size(); i++) {
             Account acc = accounts.get(i);
-            System.out.println((i+1)+"     "+acc.getAccountNumber()+"  |             "+acc.getBalance());
+            System.out.println((i + 1) + "     " + acc.getAccountNumber() + "     |                   " + formatter.format(acc.getBalance()) + "đ");
         }
     }
 }

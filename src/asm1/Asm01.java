@@ -1,11 +1,9 @@
 package asm1;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Assignment1 {
+public class Asm01 {
 
     //  MODE_HARD = true tạo chuỗi 6 số bảo mật ngẫu nhiên
     //  false tạo tạo chuỗi 3 số bảo mật từ 100->999

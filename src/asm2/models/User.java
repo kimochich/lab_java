@@ -4,8 +4,7 @@ public abstract class User {
     private String name;
     private String customerId;
 
-    public User()
-    {
+    public User() {
 
     }
 
@@ -21,7 +20,10 @@ public abstract class User {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(String customerId) throws Exception {
+        if (!customerId.matches("[0-9]{12}")) {
+            throw new Exception("So CCCD khong hop le. Vui long nhap lai");
+        }
         this.customerId = customerId;
     }
 }
