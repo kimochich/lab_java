@@ -10,7 +10,6 @@ public class Asm02 {
     final static String PROJECT_NAME = "NGAN HANG SO";
     final static String STUDENT_CODE = "xM02173";
     final static String VERSION = "v2.0.0";
-
     private static final Bank bank = new Bank();
 
     public static void main(String[] args) {
@@ -103,8 +102,9 @@ public class Asm02 {
         }
         System.out.println("Nhap ma STK gom 6 chu so:");
         String accountNumber = sc.nextLine();
-        while (accountNumber.length() != 6 || ) {
-            System.out.println("Khong hop le, vui long nhap lai ma stk:");
+        //kiểm tra số tài khoản có tồn tại trong bank và số tk hợp lệ
+        while (accountNumber.length() != 6 || bank.existAccountNumber(accountNumber)) {
+            System.out.println("STK khong hop le hoac da trung lap trong he thong, vui long nhap lai");
             accountNumber = sc.nextLine();
         }
         acc.setAccountNumber(accountNumber);
@@ -116,11 +116,6 @@ public class Asm02 {
         }
         acc.setBalance(balance);
         bank.addAccount(cccd, acc);
-    }
-
-    private boolean existAccountNumber()
-    {
-
     }
 
     private static void inputCustomer(Scanner sc) {

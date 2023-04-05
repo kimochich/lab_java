@@ -46,4 +46,15 @@ public class Bank {
         return false;
     }
 
+    public boolean existAccountNumber(String accountNumber) {
+        for (Customer customer : customers) {
+            for (Account acc : customer.getAccounts()) {
+                if (acc.getAccountNumber().equals(accountNumber)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }
