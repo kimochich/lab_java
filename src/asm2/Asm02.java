@@ -27,6 +27,7 @@ public class Asm02 {
                 System.out.println("| 4. Tim theo CCCD                             |");
                 System.out.println("| 5. Tim theo ten khach hang                   |");
                 System.out.println("| 0. Thoat                                     |");
+                System.out.println("+-----+-------------------+------+");
                 System.out.print("Chuc nang: ");
                 n = Integer.parseInt(sc.nextLine());
                 //nhập lại nếu số nhập vào không nằm trong menu
