@@ -97,41 +97,54 @@ public class Asm02 {
         Account acc = new Account();
         System.out.println("Nhap CCCD khach hang:");
         String cccd = sc.nextLine();
-        while (!cccd.matches("[0-9]{12}")) {
-            System.out.println("So CCCD khong hop le. Vui long nhap lai");
+        while (!cccd.matches("[0-9]{12}") || !bank.isCustomerExisted(cccd)) {
+            System.out.println("So CCCD khong hop le hoac khong ton tai trong he thong. Vui long nhap lai");
             cccd = sc.nextLine();
         }
         System.out.println("Nhap ma STK gom 6 chu so:");
         String accountNumber = sc.nextLine();
-        //kiểm tra số tài khoản có tồn tại trong bank và số tk hợp lệ
-        while (accountNumber.length() != 6 || bank.existAccountNumber(accountNumber)) {
-            System.out.println("STK khong hop le hoac da trung lap trong he thong, vui long nhap lai");
+        //kiểm tra số tài khoản hợp lệ
+        while (accountNumber.length() != 6) {
+            System.out.println("STK khong hop le, vui long nhap lai");
             accountNumber = sc.nextLine();
         }
         acc.setAccountNumber(accountNumber);
-        System.out.println("Nhap so du:");
-        double balance = Double.parseDouble(sc.nextLine());
-        while (balance < 50000) {
-            System.out.println("So du khong duoc nho hon 50_000 VND, vui long nhap lai");
-            balance = Double.parseDouble(sc.nextLine());
-        }
+        boolean isError;
+        double balance = 0;
+        do {
+            try {
+                System.out.println("Nhap so du:");
+                balance = Double.parseDouble(sc.nextLine());
+                while (balance < 50000) {
+                    System.out.println("So du khong duoc nho hon 50_000 VND, vui long nhap lai");
+                    balance = Double.parseDouble(sc.nextLine());
+                }
+                isError = false;
+            } catch (Exception e) {
+                isError = true;
+                System.out.println("So du hop le, vui long nhap lai");
+            }
+        } while (isError);
         acc.setBalance(balance);
         bank.addAccount(cccd, acc);
     }
 
     private static void inputCustomer(Scanner sc) {
-        try {
-            Customer customer = new Customer();
-            System.out.println("Nhap ten khach hang:");
-            customer.setName(sc.nextLine());
-            System.out.println("Nhap so CCCD:");
-            customer.setCustomerId(sc.nextLine());
-            bank.addCustomer(customer);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
 
-
+        Customer customer = new Customer();
+        System.out.println("Nhap ten khach hang:");
+        customer.setName(sc.nextLine());
+        boolean isError = true;
+        do {
+            try {
+                System.out.println("Nhap so CCCD:");
+                customer.setCustomerId(sc.nextLine());
+                isError = false;
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        } while (isError); // lap lai cho den khi nhap dung CCCD
+        bank.addCustomer(customer);
     }
 
 

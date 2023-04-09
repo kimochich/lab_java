@@ -5,7 +5,7 @@ public class Account {
     private double balance;
 
     public boolean isPremium() {
-        return balance > 10000000;
+        return balance >= 10000000;
     }
 
     public String getAccountNumber() {

@@ -16,7 +16,7 @@ public class Customer extends User {
         return accounts;
     }
 
-    private boolean isPremium() {
+    public boolean isPremium() {
         for (Account acc : accounts) {
             if (acc.isPremium()) {
                 return true;
@@ -29,6 +29,7 @@ public class Customer extends User {
         for (Account acc : accounts) {
             // kiểm tra nếu trùng account number thì return luôn
             if (newAccount.getAccountNumber().equals(acc.getAccountNumber())) {
+                System.out.println("Tai khoan da ton tai");
                 return;
             }
         }
@@ -46,10 +47,10 @@ public class Customer extends User {
 
     public void displayInformation() {
         DecimalFormat formatter = new DecimalFormat("###,###,###");
-        System.out.println(getCustomerId() + "     |     " + (isPremium() ? "Premium" : "Normal") + "   |     " + formatter.format(getBalance()) + "đ");
+        System.out.printf("%-20s|%20s | %10s | %20sđ\n",getCustomerId(),getName(), (isPremium() ? "Premium" : "Normal"),formatter.format(getBalance()));
         for (int i = 0; i < accounts.size(); i++) {
             Account acc = accounts.get(i);
-            System.out.println((i + 1) + "     " + acc.getAccountNumber() + "     |                   " + formatter.format(acc.getBalance()) + "đ");
+            System.out.printf("%-6s%-14s| %55sđ\n",(i+1),acc.getAccountNumber(),formatter.format(acc.getBalance()));
         }
     }
 }
