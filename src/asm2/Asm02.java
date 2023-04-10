@@ -66,6 +66,7 @@ public class Asm02 {
     private static void searchCustomerByName(Scanner sc) {
         System.out.println("Nhap ten khach hang:");
         String name = sc.nextLine();
+        System.out.println("Ket qua tim kiem:");
         for (Customer cus : bank.getCustomers()) {
             if (cus.getName().trim().contains(name.trim())) {
                 cus.displayInformation();
@@ -80,6 +81,7 @@ public class Asm02 {
             System.out.println("So CCCD khong hop le. Vui long nhap lai");
             cccd = sc.nextLine();
         }
+        System.out.println("Ket qua tim kiem:");
         for (Customer cus : bank.getCustomers()) {
             if (cus.getCustomerId().equals(cccd)) {
                 cus.displayInformation();
@@ -88,6 +90,7 @@ public class Asm02 {
     }
 
     private static void showCustomerList() {
+        System.out.println("Thong tin khach hang:");
         for (Customer cus : bank.getCustomers()) {
             cus.displayInformation();
         }

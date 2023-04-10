@@ -25,7 +25,7 @@ public class DigitalBank extends Bank {
         for (Customer customer : getCustomers()) {
             if (customer.getCustomerId().equals(customerId)) {
                 DigitalCustomer digitalCustomer = (DigitalCustomer) customer;
-                digitalCustomer.withdraw(accountNumber,amount);
+                digitalCustomer.withdraw(accountNumber, amount);
             }
         }
     }

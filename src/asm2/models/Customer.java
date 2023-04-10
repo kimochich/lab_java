@@ -47,10 +47,18 @@ public class Customer extends User {
 
     public void displayInformation() {
         DecimalFormat formatter = new DecimalFormat("###,###,###");
-        System.out.printf("%-20s|%20s | %10s | %20sđ\n",getCustomerId(),getName(), (isPremium() ? "Premium" : "Normal"),formatter.format(getBalance()));
+        System.out.printf("%-20s|%20s | %10s | %20sđ\n", getCustomerId(), getName(), (isPremium() ? "Premium" : "Normal"), formatter.format(getBalance()));
         for (int i = 0; i < accounts.size(); i++) {
             Account acc = accounts.get(i);
-            System.out.printf("%-6s%-14s| %55sđ\n",(i+1),acc.getAccountNumber(),formatter.format(acc.getBalance()));
+            System.out.printf("%-6s%-14s| %55sđ\n", (i + 1), acc.getAccountNumber(), formatter.format(acc.getBalance()));
+        }
+    }
+
+    public void displayTransaction() {
+        displayInformation();
+        for (int i = 0; i < accounts.size(); i++) {
+            Account acc = accounts.get(i);
+            acc.displayTransaction();
         }
     }
 }
