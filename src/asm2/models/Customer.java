@@ -1,5 +1,7 @@
 package asm2.models;
 
+import asm3.utils.Utils;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +58,7 @@ public class Customer extends User {
 
     public void displayTransaction() {
         displayInformation();
+        System.out.printf("%35s | %10s | %10s | %20s |  %10s\n", "Ma giao dich", "So TK", "So tien", "Thoi gian", "Trang thai");
         for (int i = 0; i < accounts.size(); i++) {
             Account acc = accounts.get(i);
             acc.displayTransaction();

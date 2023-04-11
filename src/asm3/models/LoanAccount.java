@@ -18,8 +18,8 @@ public class LoanAccount extends Account implements ReportService, Withdraw {
         System.out.printf("ATM ID: %30s%n", "DIGITAL-BANK-ATM 2023");
         System.out.printf("SO TK: %32s%n", getAccountNumber());
         System.out.printf("SO TIEN: %30s%n", Utils.formatBalance(amount));
-        System.out.printf("SO DU: %32s%n", Utils.formatBalance(getBalance() - (amount * getTransactionFee())));
-        System.out.printf("PHI + VAT: %27sđ%n", Utils.formatBalance(getTransactionFee() * amount));
+        System.out.printf("SO DU: %32s%n", Utils.formatBalance(getBalance() - amount - (amount * getTransactionFee())));
+        System.out.printf("PHI + VAT: %27s%n", Utils.formatBalance(getTransactionFee() * amount));
         System.out.println(Utils.getDivider());
     }
 
@@ -28,7 +28,7 @@ public class LoanAccount extends Account implements ReportService, Withdraw {
         addTransaction(getAccountNumber(), amount, Utils.getDateTime(), isAccepted(amount));
         if (isAccepted(amount)) {
             log(amount);
-            setBalance(getBalance() - (amount * getTransactionFee()));
+            setBalance(getBalance() - amount - (amount * getTransactionFee()));
             return true;
         } else {
             System.out.println("Giao dich that bai");

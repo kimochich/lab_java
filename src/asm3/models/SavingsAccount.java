@@ -18,17 +18,17 @@ public class SavingsAccount extends Account implements ReportService, Withdraw {
         System.out.printf("ATM ID: %30s%n", "DIGITAL-BANK-ATM 2023");
         System.out.printf("SO TK: %32s%n", getAccountNumber());
         System.out.printf("SO TIEN: %30s%n", Utils.formatBalance(amount));
-        System.out.printf("SO DU: %32s%n", Utils.formatBalance(getBalance() - amount));
+        System.out.printf("SO DU: %32s%n", Utils.formatBalance(getBalance() - amount - SAVINGS_ACCOUNT_FEE));
         System.out.printf("PHI + VAT: %27sđ%n", SAVINGS_ACCOUNT_FEE);
         System.out.println(Utils.getDivider());
     }
 
     @Override
     public boolean withdraw(double amount) {
-        addTransaction(getAccountNumber(),amount,Utils.getDateTime(),isAccepted(amount));
+        addTransaction(getAccountNumber(), amount, Utils.getDateTime(), isAccepted(amount));
         if (isAccepted(amount)) {
             log(amount);
-            setBalance(getBalance() - amount);
+            setBalance(getBalance() - amount - SAVINGS_ACCOUNT_FEE);
             return true;
         }
         System.out.println("Giao dich that bai");

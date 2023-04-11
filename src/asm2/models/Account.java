@@ -47,7 +47,7 @@ public class Account {
 
     public void displayTransaction() {
         for (Transaction tran : transactions) {
-            System.out.printf("%10s | %10s | %10s |  %10s\n", tran.getAccountNumber(), Utils.formatBalance(tran.getAmount()), tran.getTime(), tran.isStatus() ? "Thanh cong" : "That bai");
+            System.out.printf("%35s | %10s | %10s | %20s |  %10s\n", tran.getId(), tran.getAccountNumber(), Utils.formatBalance(tran.getAmount()), tran.getTime(), tran.isStatus() ? "Thanh cong" : "That bai");
         }
     }
 }
