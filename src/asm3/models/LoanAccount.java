@@ -2,7 +2,6 @@ package asm3.models;
 
 import asm2.models.Account;
 import asm3.utils.Utils;
-import jdk.jshell.execution.Util;
 
 public class LoanAccount extends Account implements ReportService, Withdraw {
 
@@ -38,7 +37,7 @@ public class LoanAccount extends Account implements ReportService, Withdraw {
 
     @Override
     public boolean isAccepted(double amount) {
-        if ((getBalance() - (amount * getTransactionFee())) < 50000) {
+        if ((getBalance() - amount - (amount * getTransactionFee())) < 50000) {
             return false;
         }
         return !(amount > LOAN_ACCOUNT_MAX_BALANCE);

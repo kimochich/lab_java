@@ -59,9 +59,11 @@ public class Asm03 {
                         inputAccount(sc, loanAccount);
                         break;
                     case 4:
+                        //rút tiền
                         withdraw(sc, CUSTOMER_ID);
                         break;
                     case 5:
+                        //hiển thị lịch sử rút tiền
                         showTransactionList();
                         break;
                     case 0:
